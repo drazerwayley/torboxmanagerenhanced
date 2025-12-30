@@ -1,6 +1,7 @@
 services:
   torbox-app:
-    image: ghcr.io/onkarvelhals/torbox-app-enhanced:latest
+    build: .
+    image: torbox-app:latest
     container_name: torbox-app
     restart: unless-stopped
     ports:

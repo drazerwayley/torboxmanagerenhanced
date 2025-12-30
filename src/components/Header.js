@@ -210,7 +210,7 @@ export default function Header({ apiKey }) {
               )}
 
               <a
-                href="https://github.com/onkarvelhals/torbox-app-enhanced"
+                href="https://github.com/drazerwayley/torbox-app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-xl text-primary-text/60 dark:text-primary-text-dark/60 hover:text-primary hover:bg-primary/10 transition-all"
@@ -290,7 +290,7 @@ export default function Header({ apiKey }) {
                     <SystemStatusIndicator apiKey={apiKey} />
                   </div>
                   <a
-                    href="https://github.com/onkarvelhals/torbox-app-enhanced"
+                    href="https://github.com/drazerwayley/torbox-app"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-xl bg-surface-alt/50 border border-border/30"

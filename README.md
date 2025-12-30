@@ -63,7 +63,7 @@ A modern, power-user focused alternative to the default TorBox UI. Built with Ne
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/jittarao/torbox-app.git
+git clone https://github.com/drazerwayley/torbox-app.git
 cd torbox-app
 ```
 
@@ -78,7 +78,7 @@ docker compose up -d
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/jittarao/torbox-app.git
+git clone https://github.com/drazerwayley/torbox-app.git
 cd torbox-app
 ```
 
@@ -113,7 +113,7 @@ docker compose up -d
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/jittarao/torbox-app.git
+git clone https://github.com/drazerwayley/torbox-app.git
 cd torbox-app
 ```
 

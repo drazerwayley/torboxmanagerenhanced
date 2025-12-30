@@ -205,7 +205,7 @@ export default function LandingPage({ onKeyChange }) {
 
               <footer className="mt-8 pt-6 border-t border-border/5 dark:border-border-dark/5 flex flex-col items-center gap-2">
                 <p className="text-[10px] text-primary-text/30 dark:text-primary-text-dark/30 tracking-wide">
-                  {t('footer.description')} <a href="https://github.com/onkarvelhals/torbox-app-enhanced" className="text-primary/50 hover:underline font-bold">GITHUB</a>
+                  {t('footer.description')} <a href="https://github.com/drazerwayley/torbox-app" className="text-primary/50 hover:underline font-bold">GITHUB</a>
                 </p>
                 <div className="flex gap-4">
                   <div className="w-1 h-1 rounded-full bg-primary/20"></div>
