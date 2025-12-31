@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat dumb-init
 COPY package.json bun.lock ./
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install
 
 FROM oven/bun:1-alpine AS builder
 WORKDIR /app

@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat python3 make g++
 COPY package.json ./
 
 # Install dependencies with optimizations
-RUN bun install --production --frozen-lockfile --no-cache
+RUN bun install --production --no-cache
 
 FROM oven/bun:1-alpine AS builder
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN apk add --no-cache libc6-compat python3 make g++
 COPY package.json ./
 
 # Install all dependencies (including dev dependencies)
-RUN bun install --frozen-lockfile --no-cache
+RUN bun install --no-cache
 
 # Copy source code
 COPY . .
