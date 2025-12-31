@@ -1,8 +1,8 @@
 FROM oven/bun:1-alpine AS deps
 WORKDIR /app
 
-# Install dependencies for native modules if needed
-RUN apk add --no-cache libc6-compat
+# Install dependencies for native modules and runtime
+RUN apk add --no-cache libc6-compat dumb-init
 
 # Copy package files
 COPY package.json bun.lock ./
@@ -32,8 +32,8 @@ ENV NODE_ENV=production
 ENV PORT=5000
 ENV HOSTNAME="0.0.0.0"
 
-# Install runtime dependencies
-RUN apk add --no-cache dumb-init
+# Copy dumb-init from deps stage to avoid running apk in final stage
+COPY --from=deps /usr/bin/dumb-init /usr/bin/dumb-init
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
