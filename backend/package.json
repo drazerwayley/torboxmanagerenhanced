@@ -1,5 +1,5 @@
 {
-  "name": "torbox-backend",
+  "name": "torbox-backend-enhanced",
   "version": "0.1.27",
   "description": "TorBox Manager Backend - Self-hosted automation and data persistence",
   "type": "module",

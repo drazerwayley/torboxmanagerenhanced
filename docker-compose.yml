@@ -10,7 +10,7 @@ services:
     volumes:
       - torbox-data:/app/data
     # depends_on:
-    #   - torbox-backend
+    #   - torbox-backend-enhanced
     # labels:
     #   - "traefik.enable=true"
     #   - "traefik.http.routers.tbm.rule=Host(`${TORBOX_MANAGER_HOSTNAME?}`)"
@@ -20,14 +20,14 @@ services:
 
   # Self-hosted backend for 24/7 automation (optional)
   # Uncomment the following to enable 24/7 automation rules
-  # torbox-backend:
+  # torbox-backend-enhanced:
   #   image: ghcr.io/drazerwayley/torboxmanagerenhanced:backend-latest
-  #   container_name: torbox-backend
+  #   container_name: torbox-backend-enhanced
   #   restart: unless-stopped
   #   environment:
   #     - TORBOX_API_KEY=${TORBOX_API_KEY}
   #     - FRONTEND_URL=${FRONTEND_URL}
-  #     - BACKEND_URL=http://torbox-backend:5001
+  #     - BACKEND_URL=http://torbox-backend-enhanced:5001
   #   volumes:
   #     - backend-data:/app/data
 
