@@ -18,7 +18,7 @@ class TorBoxBackend {
     this.database = new Database();
     this.automationEngine = null;
     this.apiClient = null;
-    
+
     this.setupMiddleware();
     this.setupRoutes();
     this.initializeServices();
@@ -30,19 +30,19 @@ class TorBoxBackend {
       contentSecurityPolicy: false, // Disable for API
       crossOriginEmbedderPolicy: false
     }));
-    
+
     // CORS configuration
-    const allowedOrigins = process.env.FRONTEND_URL 
+    const allowedOrigins = process.env.FRONTEND_URL
       ? process.env.FRONTEND_URL.split(',')
-      : ['http://localhost:3000'];
+      : ['http://localhost:5000'];
     this.app.use(cors({
       origin: allowedOrigins,
       credentials: true
     }));
-    
+
     // Compression
     this.app.use(compression());
-    
+
     // Rate limiting
     const limiter = rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
@@ -50,7 +50,7 @@ class TorBoxBackend {
       message: 'Too many requests from this IP, please try again later.'
     });
     this.app.use('/api/', limiter);
-    
+
     // Body parsing
     this.app.use(express.json({ limit: '10mb' }));
     this.app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -59,8 +59,8 @@ class TorBoxBackend {
   setupRoutes() {
     // Health check
     this.app.get('/api/backend/status', (req, res) => {
-      res.json({ 
-        available: true, 
+      res.json({
+        available: true,
         mode: 'selfhosted',
         version: process.env.npm_package_version || '0.1.0',
         uptime: process.uptime()
@@ -102,12 +102,12 @@ class TorBoxBackend {
         const { rules } = req.body;
         console.log('Extracted rules:', rules);
         await this.database.saveAutomationRules(rules);
-        
+
         // Restart automation engine with new rules
         if (this.automationEngine) {
           await this.automationEngine.reloadRules();
         }
-        
+
         res.json({ success: true, message: 'Rules saved successfully' });
       } catch (error) {
         console.error('Error saving automation rules:', error);
@@ -120,7 +120,7 @@ class TorBoxBackend {
       try {
         const ruleId = parseInt(req.params.id);
         const { enabled } = req.body;
-        
+
         if (enabled !== undefined) {
           await this.database.updateRuleStatus(ruleId, enabled);
           res.json({ success: true, message: 'Rule updated successfully' });
@@ -160,22 +160,22 @@ class TorBoxBackend {
     this.app.post('/api/backend/api-key', async (req, res) => {
       try {
         const { apiKey } = req.body;
-        
+
         if (!apiKey) {
           return res.status(400).json({ success: false, error: 'API key is required' });
         }
 
         // Initialize API client with the provided key
         this.apiClient = new ApiClient(apiKey);
-        
+
         // Test the API key by making a simple request
         try {
           await this.apiClient.getTorrents();
           console.log('TorBox API key validated and client initialized');
         } catch (error) {
-          return res.status(400).json({ 
-            success: false, 
-            error: 'Invalid API key or TorBox API unavailable' 
+          return res.status(400).json({
+            success: false,
+            error: 'Invalid API key or TorBox API unavailable'
           });
         }
 
@@ -202,9 +202,9 @@ class TorBoxBackend {
       try {
         const hasApiKey = !!this.apiClient;
         const automationStatus = this.automationEngine ? this.automationEngine.getStatus() : null;
-        
-        res.json({ 
-          success: true, 
+
+        res.json({
+          success: true,
           hasApiKey,
           automationEngine: automationStatus
         });
@@ -240,12 +240,12 @@ class TorBoxBackend {
     this.app.get('/api/storage/:key', async (req, res) => {
       try {
         const { key } = req.params;
-        
+
         // Validate key to prevent path traversal
         if (!key || key.includes('..') || key.includes('/') || key.includes('\\')) {
           return res.status(400).json({ success: false, error: 'Invalid key format' });
         }
-        
+
         const value = await this.database.getStorageValue(key);
         res.json({ success: true, value });
       } catch (error) {
@@ -257,12 +257,12 @@ class TorBoxBackend {
     this.app.post('/api/storage/:key', async (req, res) => {
       try {
         const { key } = req.params;
-        
+
         // Validate key to prevent path traversal
         if (!key || key.includes('..') || key.includes('/') || key.includes('\\')) {
           return res.status(400).json({ success: false, error: 'Invalid key format' });
         }
-        
+
         const { value } = req.body;
         await this.database.setStorageValue(key, value);
         res.json({ success: true, message: 'Value saved successfully' });
@@ -275,8 +275,8 @@ class TorBoxBackend {
     // Error handling middleware
     this.app.use((error, req, res, next) => {
       console.error('Unhandled error:', error);
-      res.status(500).json({ 
-        success: false, 
+      res.status(500).json({
+        success: false,
         error: 'Internal server error',
         message: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'
       });
@@ -284,8 +284,8 @@ class TorBoxBackend {
 
     // 404 handler
     this.app.use('*', (req, res) => {
-      res.status(404).json({ 
-        success: false, 
+      res.status(404).json({
+        success: false,
         error: 'Endpoint not found',
         path: req.originalUrl
       });

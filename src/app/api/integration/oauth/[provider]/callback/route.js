@@ -24,19 +24,19 @@ export async function GET(request, { params }) {
   const apiProvider = providerMapping[provider];
   if (!apiProvider) {
     return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=invalid_provider`
+      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=invalid_provider`
     );
   }
 
   if (error) {
     return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=${error}`
+      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=${error}`
     );
   }
 
   if (!code) {
     return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=no_code`
+      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=no_code`
     );
   }
 
@@ -53,27 +53,27 @@ export async function GET(request, { params }) {
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=${errorData.error || 'callback_failed'}`
+        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=${errorData.error || 'callback_failed'}`
       );
     }
 
     const data = await response.json();
-    
+
     if (data.success) {
       // According to the API docs, the callback should redirect to torbox.app
       // But we'll redirect back to our app with success status
       return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_success=${provider}`
+        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_success=${provider}`
       );
     } else {
       return NextResponse.redirect(
-        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=${data.error || 'callback_failed'}`
+        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=${data.error || 'callback_failed'}`
       );
     }
   } catch (error) {
     console.error('Error handling OAuth callback:', error);
     return NextResponse.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}?oauth_error=callback_error`
+      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5000'}?oauth_error=callback_error`
     );
   }
 }

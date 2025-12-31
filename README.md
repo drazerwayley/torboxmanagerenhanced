@@ -72,7 +72,7 @@ cd torbox-app
 docker compose up -d
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) and enter your TorBox API key to begin.
+3. Open [http://localhost:5000](http://localhost:5000) and enter your TorBox API key to begin.
 
 ### Self-Hosted Backend (24/7 Automation)
 
@@ -99,7 +99,7 @@ torbox-backend:
 3. Set environment variables (create a `.env` file or export them):
 ```bash
 TORBOX_API_KEY=your_api_key_here
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:5000
 ```
 
 4. Start with backend:
@@ -107,7 +107,7 @@ FRONTEND_URL=http://localhost:3000
 docker compose up -d
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) and enter your TorBox API key!
+5. Open [http://localhost:5000](http://localhost:5000) and enter your TorBox API key!
 
 ### Local Development
 
@@ -127,7 +127,7 @@ bun install
 bun run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) and enter your TorBox API key to begin.
+4. Open [http://localhost:5000](http://localhost:5000) and enter your TorBox API key to begin.
 
 ## Deployment Options
 
@@ -147,7 +147,7 @@ For self-hosted backend deployment:
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
 | `TORBOX_API_KEY` | Your TorBox API key | - | Yes |
-| `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:3000` | No |
+| `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5000` | No |
 | `BACKEND_URL` | Backend URL | `http://torbox-backend:3001` | No |
 
 ### API Key Setup

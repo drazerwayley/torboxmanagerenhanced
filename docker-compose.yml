@@ -4,7 +4,7 @@ services:
     container_name: torbox-app
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "5000:5000"
     environment:
       - BACKEND_DISABLED=true
     volumes:
@@ -21,15 +21,16 @@ services:
   # Self-hosted backend for 24/7 automation (optional)
   # Uncomment the following to enable 24/7 automation rules
   # torbox-backend:
-  #   image: ghcr.io/jittarao/torbox-app:backend-latest
+  #   image: https://github.com/drazerwayley/torboxmanagerenhanced:backend-latest
   #   container_name: torbox-backend
   #   restart: unless-stopped
   #   environment:
   #     - TORBOX_API_KEY=${TORBOX_API_KEY}
   #     - FRONTEND_URL=${FRONTEND_URL}
-  #     - BACKEND_URL=http://torbox-backend:3001
+  #     - BACKEND_URL=http://torbox-backend:5001
   #   volumes:
   #     - backend-data:/app/data
 
 volumes:
   torbox-data:
+  backend-data:

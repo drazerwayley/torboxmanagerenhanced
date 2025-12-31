@@ -47,7 +47,7 @@ bun start
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `TORBOX_API_KEY` | Your TorBox API key | Optional |
-| `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:3000` |
+| `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5000` |
 | `PORT` | Backend port | `3001` |
 
 ### API Endpoints

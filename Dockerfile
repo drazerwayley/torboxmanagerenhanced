@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1.4
 FROM oven/bun:1-alpine AS deps
 WORKDIR /app
 
@@ -30,7 +29,7 @@ WORKDIR /app
 # Disable Next.js telemetry in production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=5000
 ENV HOSTNAME="0.0.0.0"
 
 # Install runtime dependencies
@@ -57,11 +56,11 @@ RUN chown -R nextjs:nodejs data
 USER nextjs
 
 # Expose port
-EXPOSE 3000
+EXPOSE 5000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+    CMD node -e "require('http').get('http://localhost:5000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
 
 # Start the application
 ENTRYPOINT ["dumb-init", "--"]
