@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import http from 'http';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:3001';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:5001';
 
 export async function GET() {
   try {
     const url = new URL(`${BACKEND_URL}/api/automation/rules`);
-    
+
     const response = await new Promise((resolve, reject) => {
       const req = http.get(url, (res) => {
         let data = '';
@@ -20,7 +20,7 @@ export async function GET() {
           }
         });
       });
-      
+
       req.on('error', reject);
       req.setTimeout(5000, () => {
         req.destroy();
@@ -45,7 +45,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    
+
     const response = await fetch(`${BACKEND_URL}/api/automation/rules`, {
       method: 'POST',
       headers: {

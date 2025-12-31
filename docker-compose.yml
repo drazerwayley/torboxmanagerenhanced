@@ -21,7 +21,7 @@ services:
   # Self-hosted backend for 24/7 automation (optional)
   # Uncomment the following to enable 24/7 automation rules
   # torbox-backend:
-  #   image: https://github.com/drazerwayley/torboxmanagerenhanced:backend-latest
+  #   image: ghcr.io/drazerwayley/torboxmanagerenhanced:backend-latest
   #   container_name: torbox-backend
   #   restart: unless-stopped
   #   environment:

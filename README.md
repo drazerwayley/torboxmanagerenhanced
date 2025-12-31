@@ -91,7 +91,7 @@ torbox-backend:
   environment:
     - TORBOX_API_KEY=${TORBOX_API_KEY}
     - FRONTEND_URL=${FRONTEND_URL}
-    - BACKEND_URL=http://torbox-backend:3001
+    - BACKEND_URL=http://torbox-backend:5001
   volumes:
     - backend-data:/app/data
 ```
@@ -148,7 +148,7 @@ For self-hosted backend deployment:
 |----------|-------------|---------|----------|
 | `TORBOX_API_KEY` | Your TorBox API key | - | Yes |
 | `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5000` | No |
-| `BACKEND_URL` | Backend URL | `http://torbox-backend:3001` | No |
+| `BACKEND_URL` | Backend URL | `http://torbox-backend:5001` | No |
 
 ### API Key Setup
 

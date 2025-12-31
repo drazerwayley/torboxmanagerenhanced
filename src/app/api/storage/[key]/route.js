@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:3001';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:5001';
 
 export async function GET(request, { params }) {
   try {
     const { key } = params;
-    
+
     // Validate key to prevent path traversal
     if (!key || key.includes('..') || key.includes('/') || key.includes('\\')) {
       return NextResponse.json(
@@ -13,7 +13,7 @@ export async function GET(request, { params }) {
         { status: 400 }
       );
     }
-    
+
     const response = await fetch(`${BACKEND_URL}/api/storage/${key}`, {
       method: 'GET',
       headers: {
@@ -39,7 +39,7 @@ export async function GET(request, { params }) {
 export async function POST(request, { params }) {
   try {
     const { key } = params;
-    
+
     // Validate key to prevent path traversal
     if (!key || key.includes('..') || key.includes('/') || key.includes('\\')) {
       return NextResponse.json(
@@ -47,9 +47,9 @@ export async function POST(request, { params }) {
         { status: 400 }
       );
     }
-    
+
     const body = await request.json();
-    
+
     const response = await fetch(`${BACKEND_URL}/api/storage/${key}`, {
       method: 'POST',
       headers: {

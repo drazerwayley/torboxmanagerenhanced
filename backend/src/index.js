@@ -14,7 +14,7 @@ import ApiClient from './api/ApiClient.js';
 class TorBoxBackend {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 3001;
+    this.port = process.env.PORT || 5001;
     this.database = new Database();
     this.automationEngine = null;
     this.apiClient = null;

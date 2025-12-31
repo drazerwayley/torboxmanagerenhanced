@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import http from 'http';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:3001';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:5001';
 
 export async function POST(request) {
   try {

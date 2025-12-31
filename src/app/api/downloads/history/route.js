@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:3001';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://torbox-backend:5001';
 
 export async function GET() {
   try {
@@ -29,7 +29,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    
+
     const response = await fetch(`${BACKEND_URL}/api/downloads/history`, {
       method: 'POST',
       headers: {

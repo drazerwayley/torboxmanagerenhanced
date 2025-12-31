@@ -19,7 +19,7 @@ A lightweight Node.js backend for TorBox Manager that provides 24/7 automation a
 docker compose -f docker-compose.selfhosted.yml up -d
 ```
 
-2. The backend will be available at `http://localhost:3001`
+2. The backend will be available at `http://localhost:5001`
 
 ### Local Development
 
@@ -48,7 +48,7 @@ bun start
 |----------|-------------|---------|
 | `TORBOX_API_KEY` | Your TorBox API key | Optional |
 | `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5000` |
-| `PORT` | Backend port | `3001` |
+| `PORT` | Backend port | `5001` |
 
 ### API Endpoints
 
