@@ -1,7 +1,6 @@
 services:
   torbox-app:
     build: .
-    image: torbox-app:latest
     container_name: torbox-app
     restart: unless-stopped
     ports:
