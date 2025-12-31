@@ -1,7 +1,7 @@
 services:
   torbox-app:
     build: .
-    container_name: torbox-app
+    container_name: torbox-app-enhanced
     restart: unless-stopped
     ports:
       - "5000:5000"
