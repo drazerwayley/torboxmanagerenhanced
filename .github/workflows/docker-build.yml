@@ -97,7 +97,7 @@ jobs:
           echo "backend-tags=ghcr.io/$REPO:backend-latest-$SUFFIX,ghcr.io/$REPO:backend-$VERSION-$SUFFIX,ghcr.io/$REPO:backend-$COMMIT-$SUFFIX" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image (frontend)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
@@ -120,7 +120,7 @@ jobs:
 
       - name: Build and push Docker image (backend)
         if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./backend
           file: ./backend/Dockerfile
